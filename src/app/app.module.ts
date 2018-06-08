@@ -1,10 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { IndexComponent } from './costumer/index/index.component';
-import { CreateComponent } from './costumer/create/create.component';
-import { EditComponent } from './costumer/edit/edit.component';
+import { IndexComponent } from './components/index/index.component';
+import { CreateComponent } from './components/create/create.component';
+import { EditComponent } from './components/edit/edit.component';
+import { appRoutes } from './routerConfig';
+
+import { CostumerService } from './costumer.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +20,9 @@ import { EditComponent } from './costumer/edit/edit.component';
     EditComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CostumerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
