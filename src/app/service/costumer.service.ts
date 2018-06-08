@@ -13,7 +13,7 @@ export class CostumerService {
   constructor(private http: HttpClient) {}
 
   addCostumer(costumer) {
-    const uri = 'http://localhost:4000/costumers/add';
+    const uri = 'http://localhost:8080/costumers/add';
   
     this
       .http
@@ -23,7 +23,7 @@ export class CostumerService {
   }
 
   getCostumers() {
-    const uri = 'http://localhost:4000/costumers';
+    const uri = 'http://localhost:8080/costumers';
     return this
             .http
             .get(uri)
@@ -33,7 +33,7 @@ export class CostumerService {
   }
 
   editCostumer(id) {
-    const uri = 'http://localhost:4000/costumers/edit/' + id;
+    const uri = 'http://localhost:8080/costumers/edit/' + id;
     return this
             .http
             .get(uri)
@@ -43,7 +43,7 @@ export class CostumerService {
   }
 
   updateCostumer(costumer, id) {
-    const uri = 'http://localhost:4000/costumers/update/' + id;
+    const uri = 'http://localhost:8080/costumers/update/' + id;
 
     this
       .http
@@ -52,7 +52,7 @@ export class CostumerService {
   }
 
   deleteCostumer(id) {
-    const uri = 'http://localhost:4000/costumers/delete/' + id;
+    const uri = 'http://localhost:8080/costumers/delete/' + id;
 
         return this
             .http
