@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +27,11 @@ export class CostumerService {
     return this
             .http
             .get(uri)
-            .map(res => {
-              return res;
-            });
+            .pipe(
+              map(res => {
+                return res;
+              })
+            );
   }
 
   editCostumer(id) {
@@ -37,9 +39,11 @@ export class CostumerService {
     return this
             .http
             .get(uri)
-            .map(res => {
-              return res;
-            });
+            .pipe(
+              map(res => {
+                return res;
+              })
+            );
   }
 
   updateCostumer(costumer, id) {
@@ -57,8 +61,10 @@ export class CostumerService {
         return this
             .http
             .get(uri)
-            .map(res => {
-              return res;
-            });
+            .pipe(
+              map(res => {
+                return res;
+              })
+            );
   }
 }
