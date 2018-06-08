@@ -22,7 +22,7 @@ export class CostumerService {
           console.log('Done'));
   }
 
-  getCoins() {
+  getCostumers() {
     const uri = 'http://localhost:4000/costumers';
     return this
             .http
@@ -32,7 +32,7 @@ export class CostumerService {
             });
   }
 
-  editCoin(id) {
+  editCostumer(id) {
     const uri = 'http://localhost:4000/costumers/edit/' + id;
     return this
             .http
@@ -42,7 +42,7 @@ export class CostumerService {
             });
   }
 
-  updateCoin(costumer, id) {
+  updateCostumer(costumer, id) {
     const uri = 'http://localhost:4000/costumers/update/' + id;
 
     this
@@ -51,7 +51,7 @@ export class CostumerService {
       .subscribe(res => console.log('Done'));
   }
 
-  deleteCoin(id) {
+  deleteCostumer(id) {
     const uri = 'http://localhost:4000/costumers/delete/' + id;
 
         return this

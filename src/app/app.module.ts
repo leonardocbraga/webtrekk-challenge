@@ -10,7 +10,7 @@ import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 import { appRoutes } from './routerConfig';
 
-import { CostumerService } from './costumer.service';
+import { CostumerService } from './service/costumer.service';
 
 @NgModule({
   declarations: [
