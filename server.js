@@ -19,10 +19,10 @@ const port = process.env.PORT || 8080;
 
 app.use('/costumers', costumerRoutes);
 
-app.use(express.static(__dirname + '/dist'));
-
-app.get('/*', function(req,res) {  
-  res.sendFile(path.join(__dirname+'/dist/index.html'));
+var distDir = __dirname + "/public/";
+app.use(express.static(distDir));
+app.get('/*', function(req,res) {    
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 const server = app.listen(port, function(){
