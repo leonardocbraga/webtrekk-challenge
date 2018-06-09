@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{title}}!!\n  </h1>\n  <nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <ul class=\"nav navbar-nav\">\n        <li class=\"active\">\n          <a routerLink=\"create\" routerLinkActive=\"active\">\n            Add Costumers\n          </a>\n        </li>    \n      </ul>\n    </div>\n  </nav>\n  \n  <div class=\"container\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
+module.exports = "<div style=\"text-align:center\">\r\n  <h1>\r\n    {{title}}!!\r\n  </h1>\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li class=\"active\">\r\n          <a routerLink=\"index\" routerLinkActive=\"active\">\r\n            Add Costumers\r\n          </a>\r\n        </li>    \r\n      </ul>\r\n    </div>\r\n  </nav>\r\n  \r\n  <div class=\"container\">\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -162,7 +162,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel panel-primary\">\n  <div class=\"panel-heading\">\n    {{ title }}\n  </div>\n  <div class=\"panel-body\">\n    <form [formGroup]=\"angForm\" novalidate>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Coin Name</label>\n        <input type=\"text\" class=\"form-control\" formControlName=\"name\" #name />\n      </div>\n      <div *ngIf=\"angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['name'].errors.required\">\n          Name is required.\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Coin Price</label>\n        <input type=\"text\" class=\"form-control\" formControlName=\"price\" #price/>\n      </div>\n      <div *ngIf=\"angForm.controls['price'].invalid && (angForm.controls['price'].dirty || angForm.controls['price'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['price'].errors.required\">\n          Price is required.\n        </div>\n      </div>\n        <div class=\"form-group\">\n          <button (click)=\"addCoin(name.value, price.value)\" [disabled]=\"angForm.pristine || angForm.invalid\" class=\"btn btn-primary\">Add</button>\n        </div>\n    </form>\n  </div>\n</div>"
+module.exports = "<div class=\"panel panel-primary\">\r\n  <div class=\"panel-heading\">\r\n    {{ title }}\r\n  </div>\r\n  <div class=\"panel-body\">\r\n    <form [formGroup]=\"angForm\" novalidate>\r\n      <div class=\"form-group\">\r\n        <label class=\"col-md-4\">First Name</label>\r\n        <input type=\"text\" class=\"form-control\" formControlName=\"first_name\" #first_name [(ngModel)]=\"costumer.name.first\"/>\r\n      </div>\r\n      <div *ngIf=\"angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)\" class=\"alert alert-danger\">\r\n        <div *ngIf=\"angForm.controls['first_name'].errors.required\">\r\n          First Name is required.\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label class=\"col-md-4\">Last Name</label>\r\n        <input type=\"text\" class=\"form-control\" formControlName=\"last_name\" #last_name [(ngModel)]=\"costumer.name.last\"/>\r\n      </div>\r\n      <div *ngIf=\"angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)\" class=\"alert alert-danger\">\r\n        <div *ngIf=\"angForm.controls['last_name'].errors.required\">\r\n          Last Name is required.\r\n        </div>\r\n      </div>\r\n        <div class=\"btn-toolbar\">\r\n          <button (click)=\"addCostumer(costumer)\" [disabled]=\"angForm.pristine || angForm.invalid\" class=\"btn btn-primary\">Add</button>\r\n          <a [routerLink]=\"['/index']\" class=\"btn btn-primary\">Back</a>\r\n        </div>\r\n    </form>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -179,6 +179,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _service_costumer_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/costumer.service */ "./src/app/service/costumer.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _model_costumer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../model/costumer */ "./src/app/model/costumer.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -191,11 +192,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var CreateComponent = /** @class */ (function () {
     function CreateComponent(costumerservice, fb) {
         this.costumerservice = costumerservice;
         this.fb = fb;
         this.title = 'Add Costumer';
+        this.costumer = {
+            name: {
+                first: '',
+                last: ''
+            },
+            gender: ''
+        };
         this.createForm();
     }
     CreateComponent.prototype.createForm = function () {
@@ -204,11 +213,15 @@ var CreateComponent = /** @class */ (function () {
             last_name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
     };
-    CreateComponent.prototype.addCoin = function (first_name, last_name) {
-        this.costumerservice.addCostumer({ name: { first: first_name, last: last_name } });
+    CreateComponent.prototype.addCostumer = function (costumer) {
+        this.costumerservice.addCostumer(costumer);
     };
     CreateComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _model_costumer__WEBPACK_IMPORTED_MODULE_3__["Costumer"])
+    ], CreateComponent.prototype, "costumer", void 0);
     CreateComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-create',
@@ -242,7 +255,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel panel-primary\">\n  <div class=\"panel-heading\">\n    {{ title }}\n  </div>\n  <div class=\"panel-body\">\n    <form [formGroup]=\"angForm\" novalidate>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Coin Name</label>\n        <input type=\"text\" class=\"form-control\" formControlName=\"name\" #name [(ngModel)] = \"coin.name\"/>\n      </div>\n      <div *ngIf=\"angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['name'].errors.required\">\n          Name is required.\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <label class=\"col-md-4\">Coin Price</label>\n        <input type=\"text\" class=\"form-control\" formControlName=\"price\" #price [(ngModel)] = \"coin.price\" />\n      </div>\n      <div *ngIf=\"angForm.controls['price'].invalid && (angForm.controls['price'].dirty || angForm.controls['price'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['price'].errors.required\">\n          Price is required.\n        </div>\n      </div>\n        <div class=\"form-group\">\n          <button (click)=\"updateCoin(name.value, price.value)\" [disabled]=\"angForm.pristine || angForm.invalid\" class=\"btn btn-primary\">Update</button>\n        </div>\n    </form>\n  </div>\n</div>"
+module.exports = "<div class=\"panel panel-primary\">\n  <div class=\"panel-heading\">\n    {{ title }}\n  </div>\n  <div *ngIf=\"costumer\" class=\"panel-body\">\n    <form [formGroup]=\"angForm\" novalidate>\n      <div class=\"form-group\" *ngIf=\"costumer.name\">\n        <label class=\"col-md-4\">First Name</label>\n        <input type=\"text\" class=\"form-control\" formControlName=\"first_name\" #first_name [(ngModel)] = \"costumer.name.first\"/>\n      </div>\n      <div *ngIf=\"angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['first_name'].errors.required\">\n          First Name is required.\n        </div>\n      </div>\n      <div class=\"form-group\" *ngIf=\"costumer.name\">\n        <label class=\"col-md-4\">Last Name</label>\n        <input type=\"text\" class=\"form-control\" formControlName=\"last_name\" #last_name [(ngModel)] = \"costumer.name.last\" />\n      </div>\n      <div *ngIf=\"angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['last_name'].errors.required\">\n          Last Name is required.\n        </div>\n      </div>\n        <div class=\"btn-toolbar\">\n          <button (click)=\"updateCostumer(costumer)\" [disabled]=\"angForm.pristine || angForm.invalid\" class=\"btn btn-primary\">Update</button>\n          <a [routerLink]=\"['/index']\" class=\"btn btn-primary\">Back</a>\n        </div>\n    </form>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -275,23 +288,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var EditComponent = /** @class */ (function () {
     function EditComponent(route, router, service, fb) {
+        var _this = this;
         this.route = route;
         this.router = router;
         this.service = service;
         this.fb = fb;
         this.title = 'Edit Costumer';
+        this.route.params.subscribe(function (params) {
+            _this.costumer = _this.service.editCostumer(params['id']).subscribe(function (res) {
+                _this.costumer = res;
+            });
+        });
         this.createForm();
     }
     EditComponent.prototype.createForm = function () {
         this.angForm = this.fb.group({
-            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            price: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
+            first_name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            last_name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
         });
     };
-    EditComponent.prototype.updateCostumer = function (first_name, last_name) {
+    EditComponent.prototype.updateCostumer = function (costumer) {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            _this.service.updateCostumer({ name: { first: first_name, last: last_name } }, params['id']);
+            _this.service.updateCostumer(costumer, params['id']);
             _this.router.navigate(['index']);
         });
     };
@@ -301,13 +320,11 @@ var EditComponent = /** @class */ (function () {
         });
     };
     EditComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.route.params.subscribe(function (params) {
-            _this.costumer = _this.service.editCostumer(params['id']).subscribe(function (res) {
-                _this.costumer = res;
-            });
-        });
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], EditComponent.prototype, "costumer", void 0);
     EditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-edit',
@@ -341,7 +358,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-hover\">\n  <thead>\n  <tr>\n      <td>Coin Name</td>\n      <td>Coin Price</td>\n      <td colspan=\"2\">Actions</td>\n  </tr>\n  </thead>\n\n  <tbody>\n      <tr *ngFor=\"let coin of coins\">\n          <td>{{ coin.name }}</td>\n          <td>{{ coin.price }}</td>\n          <td><a [routerLink]=\"['/edit', coin._id]\" class=\"btn btn-primary\">Edit</a></td>\n          <td><button (click)=\"deleteCoin(coin._id)\"  class=\"btn btn-danger\">Delete</button></td>\n      </tr>\n  </tbody>\n</table>"
+module.exports = "<a [routerLink]=\"['/create']\" class=\"btn btn-primary pull-left\">New</a>\r\n\r\n<table class=\"table table-hover\">\r\n  <thead>\r\n  <tr>\r\n      <td>First Name</td>\r\n      <td>Last Name</td>\r\n      <td>Gender</td>\r\n      <td>Actions</td>\r\n  </tr>\r\n  </thead>\r\n\r\n  <tbody>\r\n      <tr *ngFor=\"let costumer of costumers\">\r\n          <td>{{ costumer.name.first }}</td>\r\n          <td>{{ costumer.name.last }}</td>\r\n          <td>{{ costumer.gender }}</td>\r\n          <td>\r\n            <div>\r\n                <a [routerLink]=\"['/edit', costumer._id]\" class=\"btn btn-primary\">Edit</a>\r\n                <button (click)=\"deleteCostumer(costumer._id)\"  class=\"btn btn-danger\">Delete</button>\r\n            </div>\r\n          </td>\r\n      </tr>\r\n  </tbody>\r\n</table>"
 
 /***/ }),
 
@@ -356,8 +373,9 @@ module.exports = "<table class=\"table table-hover\">\n  <thead>\n  <tr>\n      
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IndexComponent", function() { return IndexComponent; });
 /* harmony import */ var _service_costumer_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../service/costumer.service */ "./src/app/service/costumer.service.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -370,9 +388,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var IndexComponent = /** @class */ (function () {
-    function IndexComponent(http, service) {
+    function IndexComponent(http, route, router, service) {
         this.http = http;
+        this.route = route;
+        this.router = router;
         this.service = service;
     }
     IndexComponent.prototype.ngOnInit = function () {
@@ -384,15 +405,43 @@ var IndexComponent = /** @class */ (function () {
             _this.costumers = res;
         });
     };
+    IndexComponent.prototype.deleteCostumer = function (id) {
+        var _this = this;
+        this.service.deleteCostumer(id).subscribe(function (res) {
+            console.log('Deleted');
+            //this.router.navigate(['index']);
+            _this.getCostumers();
+        });
+    };
     IndexComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
             selector: 'app-index',
             template: __webpack_require__(/*! ./index.component.html */ "./src/app/components/index/index.component.html"),
             styles: [__webpack_require__(/*! ./index.component.css */ "./src/app/components/index/index.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _service_costumer_service__WEBPACK_IMPORTED_MODULE_0__["CostumerService"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _service_costumer_service__WEBPACK_IMPORTED_MODULE_0__["CostumerService"]])
     ], IndexComponent);
     return IndexComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/model/costumer.ts":
+/*!***********************************!*\
+  !*** ./src/app/model/costumer.ts ***!
+  \***********************************/
+/*! exports provided: Costumer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Costumer", function() { return Costumer; });
+var Costumer = /** @class */ (function () {
+    function Costumer() {
+    }
+    return Costumer;
 }());
 
 
@@ -576,7 +625,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/t0665148/Documents/git/webtrekk-challenge/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Leonardo\Documents\GitHub\webtrekk-challenge\src\main.ts */"./src/main.ts");
 
 
 /***/ })
