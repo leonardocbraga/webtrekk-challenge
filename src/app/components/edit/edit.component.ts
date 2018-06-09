@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CostumerService } from './../../service/costumer.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { Costumer } from "../../model/costumer"
 
 @Component({
   selector: 'app-edit',
@@ -10,23 +11,33 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 })
 export class EditComponent implements OnInit {
 
+  @Input()
   costumer: any;
+
   angForm: FormGroup;
   title = 'Edit Costumer';
+
   constructor(private route: ActivatedRoute, private router: Router, private service: CostumerService, private fb: FormBuilder) {
+    this.route.params.subscribe(params => {
+      this.costumer = this.service.editCostumer(params['id']).subscribe(res => {
+        this.costumer = res;
+       
+      });
+    });
+
     this.createForm();
-   }
+  }
 
   createForm() {
     this.angForm = this.fb.group({
-      name: ['', Validators.required ],
-      price: ['', Validators.required ]
+      first_name: ['', Validators.required ],
+      last_name: ['', Validators.required ]
    });
   }
 
-  updateCostumer(first_name, last_name) {
+  updateCostumer(costumer) {
     this.route.params.subscribe(params => {
-      this.service.updateCostumer({name: {first: first_name, last: last_name}}, params['id']);
+      this.service.updateCostumer(costumer, params['id']);
       this.router.navigate(['index']);
     });
   }
@@ -38,11 +49,7 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.costumer = this.service.editCostumer(params['id']).subscribe(res => {
-        this.costumer = res;
-      });
-    });
+    
   }
 
 }

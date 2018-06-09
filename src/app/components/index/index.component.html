@@ -1,10 +1,12 @@
+<a [routerLink]="['/create']" class="btn btn-primary pull-left">New</a>
+
 <table class="table table-hover">
   <thead>
   <tr>
       <td>First Name</td>
       <td>Last Name</td>
       <td>Gender</td>
-      <td colspan="2">Actions</td>
+      <td>Actions</td>
   </tr>
   </thead>
 
@@ -13,8 +15,12 @@
           <td>{{ costumer.name.first }}</td>
           <td>{{ costumer.name.last }}</td>
           <td>{{ costumer.gender }}</td>
-          <td><a [routerLink]="['/edit', costumer._id]" class="btn btn-primary">Edit</a></td>
-          <td><button (click)="deleteCoin(costumer._id)"  class="btn btn-danger">Delete</button></td>
+          <td>
+            <div>
+                <a [routerLink]="['/edit', costumer._id]" class="btn btn-primary">Edit</a>
+                <button (click)="deleteCostumer(costumer._id)"  class="btn btn-danger">Delete</button>
+            </div>
+          </td>
       </tr>
   </tbody>
 </table>
