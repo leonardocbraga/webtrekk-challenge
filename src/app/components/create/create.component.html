@@ -2,13 +2,13 @@
   <div class="panel-heading">
     {{ title }}
   </div>
-  <div class="panel-body">
+  <div class="panel-body" ng-controller="DatepickerController">
     <form [formGroup]="angForm" novalidate class="form-horizontal">
       
       <div class="form-group">
         <label class="col-sm-4 control-label" for="first_name">First Name:</label>
         <div class="col-sm-4">
-            <input type="text" datepicker class="form-control" formControlName="first_name" #first_name [(ngModel)]="costumer.name.first"/>
+            <input type="text" class="form-control" formControlName="first_name" #first_name [(ngModel)]="costumer.name.first"/>
         </div>
         <div *ngIf="angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)" class="col-sm-4">
             <div *ngIf="angForm.controls['first_name'].errors.required">
@@ -55,8 +55,9 @@
       <div class="form-group">
         <label class="col-sm-4 control-label" for="birthday">Birthday:</label>
         <div class="col-sm-4">
-            <div class="input-group date" data-provide="datepicker">
-                <input type="text" class="form-control" id="birthday" formControlName="birthday" #birthday [(ngModel)]="costumer.birthday"/>
+            <div class="input-group date wdatepicker" data-provide="datepicker">
+                <input type="text" class="form-control" id="birthday" 
+                  formControlName="birthday" #birthday [(ngModel)]="costumer.birthday"/>
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-th"></span>
                 </div>
@@ -74,8 +75,9 @@
       <div class="form-group">
         <label class="col-sm-4 control-label" for="last_contact">Last Contact:</label>
         <div class="col-sm-4">
-            <div class="input-group date" data-provide="datetimepicker">
-                <input type="text" class="form-control" id="last_contact" formControlName="last_contact" #last_contact [(ngModel)]="costumer.lastContact"/>
+            <div class="input-group date wdatetimepicker" data-provide="datetimepicker">
+                <input type="text" class="form-control" id="last_contact" formControlName="last_contact" 
+                #last_contact [(ngModel)]="costumer.lastContact"/>
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-th"></span>
                 </div>
@@ -91,15 +93,9 @@
       <div class="form-group">
         <label class="col-sm-4 control-label" for="costumer_lifetime_value">Costumer Lifetime Value:</label>
         <div class="col-sm-4">
-            <div class="input-group"> 
-                <span class="input-group-addon">$</span>
-                
-                <input type="number" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control" id="costumer_lifetime_value" id="lifetime" formControlName="costumer_lifetime_value" 
-                    #costumer_lifetime_value [(ngModel)]="costumer.costumerLifetimeValue"/>
-                <!--input type="text" class="form-control" id="costumer_lifetime_value" id="lifetime" formControlName="costumer_lifetime_value" 
-                    #costumer_lifetime_value [(ngModel)]="costumer.costumerLifetimeValue"/-->
-            </div>
-            
+            <input type="text" class="form-control" id="costumer_lifetime_value" id="lifetime" 
+                  formControlName="costumer_lifetime_value" money-mask
+                  #costumer_lifetime_value [(ngModel)]="costumer.costumerLifetimeValue"/>
         </div>
         <div *ngIf="angForm.controls['costumer_lifetime_value'].invalid && (angForm.controls['costumer_lifetime_value'].dirty || angForm.controls['costumer_lifetime_value'].touched)" class="col-sm-4">
           <div *ngIf="angForm.controls['costumer_lifetime_value'].errors.required">

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="app-root">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>WebtrekkChallenge</title>
@@ -10,10 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
-</head>
-<body>
-  <app-root></app-root>
-  
+
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
@@ -24,39 +21,24 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="assets/js/angular.maskMoney.js"></script>
+  
+</head>
+<body>
+  <app-root></app-root>
+  
+
 
   <script>
       $(document).ready(function(){
-        //$('#lifetime').maskMoney();
+        //$('#costumer_lifetime_value').maskMoney();
         
-        $('.datepicker').datepicker({format: 'mm/dd/yyyy', autoclose: true});
-        $('.datetimepicker').datetimepicker({format: 'mm/dd/yyyy HH:mm:ss', autoclose: true});
+        $('.wdatepicker').datepicker({format: 'mm/dd/yyyy', autoclose: true});
+        $('.wdatetimepicker').datetimepicker({format: 'mm/dd/yyyy HH:mm:ss', autoclose: true});
 
-        
+        //angular.module('angularMaskMoneyDemo', ['maskMoney']);
       });
-      
-      var app = angular.module('app-root', []);
 
-      app.directive('datepicker', function() {
-        return {
-          require: '?ngModel',
-          link: function(scope, el, attr, ngModel) {
-            $(el).datepicker({
-              format: 'mm/dd/yyyy', autoclose: true,
-              onSelect: function(dateText) {
-                scope.$apply(function() {
-                  ngModel.$setViewValue(dateText);
-                });
-              }
-            }).on('changeDate', function(evt){
-              scope.$apply(function() {
-                  ngModel.$setViewValue(evt.date);
-                });
-            });
-          }
-          
-        };
-      });
   </script>
 </body>
 </html>
