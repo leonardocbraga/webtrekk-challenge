@@ -9,6 +9,15 @@ var Costumer = new Schema({
     },
     gender: {
         type: String
+    },
+    birthday: {
+        type: Date
+    },
+    lastContact: {
+        type: Date
+    },
+    customerLifetimeValue: {
+        type: Number
     }
 },{
     collection: 'costumers'

@@ -4,8 +4,8 @@ export class Costumer {
         first: string;
         last: string;
     }
-    //birthday: Date;
+    birthday: Date;
     gender: string;
-    //lastContact: Date;
-    //customerLifetimeValue: number;
+    lastContact: Date;
+    customerLifetimeValue: number;
 }

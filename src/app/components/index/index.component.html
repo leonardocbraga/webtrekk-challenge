@@ -6,6 +6,9 @@
       <td>First Name</td>
       <td>Last Name</td>
       <td>Gender</td>
+      <td>Birthday</td>
+      <td>Last Contact</td>
+      <td>Costumer Lifetime Value</td>
       <td>Actions</td>
   </tr>
   </thead>
@@ -15,10 +18,13 @@
           <td>{{ costumer.name.first }}</td>
           <td>{{ costumer.name.last }}</td>
           <td>{{ costumer.gender }}</td>
+          <td>{{ costumer.birthday | date: 'MM/dd/yyyy' }}</td>
+          <td>{{ costumer.lastContact | date: 'MM/dd/yyyy HH:mm:ss' }}</td>
+          <td>{{ costumer.costumerLifetimeValue }}</td>
           <td>
             <div>
-                <a [routerLink]="['/edit', costumer._id]" class="btn btn-primary">Edit</a>
-                <button (click)="deleteCostumer(costumer._id)"  class="btn btn-danger">Delete</button>
+                <a [routerLink]="['/edit', costumer._id]" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+                <button (click)="deleteCostumer(costumer._id)"  class="btn btn-default"><i class="glyphicon glyphicon-trash"></i></button>
             </div>
           </td>
       </tr>

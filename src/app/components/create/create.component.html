@@ -3,29 +3,115 @@
     {{ title }}
   </div>
   <div class="panel-body">
-    <form [formGroup]="angForm" novalidate>
+    <form [formGroup]="angForm" novalidate class="form-horizontal">
+      
       <div class="form-group">
-        <label class="col-md-4">First Name</label>
-        <input type="text" class="form-control" formControlName="first_name" #first_name [(ngModel)]="costumer.name.first"/>
-      </div>
-      <div *ngIf="angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)" class="alert alert-danger">
-        <div *ngIf="angForm.controls['first_name'].errors.required">
-          First Name is required.
+        <label class="col-sm-4 control-label" for="first_name">First Name:</label>
+        <div class="col-sm-4">
+            <input type="text" datepicker class="form-control" formControlName="first_name" #first_name [(ngModel)]="costumer.name.first"/>
         </div>
+        <div *ngIf="angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)" class="col-sm-4">
+            <div *ngIf="angForm.controls['first_name'].errors.required">
+              First Name is required.
+            </div>
+          </div>
       </div>
+
       <div class="form-group">
-        <label class="col-md-4">Last Name</label>
-        <input type="text" class="form-control" formControlName="last_name" #last_name [(ngModel)]="costumer.name.last"/>
+        <label class="col-sm-4 control-label" for="last_name">Last Name:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" formControlName="last_name" #last_name [(ngModel)]="costumer.name.last"/>
+        </div>
+        <div *ngIf="angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)" class="col-sm-4">
+            <div *ngIf="angForm.controls['last_name'].errors.required">
+              Last Name is required.
+            </div>
+          </div>
       </div>
-      <div *ngIf="angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)" class="alert alert-danger">
-        <div *ngIf="angForm.controls['last_name'].errors.required">
-          Last Name is required.
+
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Gender:</label>
+        <div class="col-sm-4">
+            <div id="input-type" class="row">
+              <div class="col-sm-6">
+                  <label class="radio-inline">
+                      <input class="form-check-input" type="radio" id="man_gender" formControlName="gender" #gender [(ngModel)]="costumer.gender" value="m" checked>Man
+                  </label>
+              </div>
+              <div class="col-sm-6">
+                  <label class="radio-inline">
+                      <input class="form-check-input" type="radio" id="woman_gender" formControlName="gender" #gender [(ngModel)]="costumer.gender" value="w">Woman
+                  </label>
+              </div>
+            </div>
+        </div>
+        <div *ngIf="angForm.controls['gender'].invalid && (angForm.controls['gender'].dirty || angForm.controls['gender'].touched)" class="col-sm-4">
+          <div *ngIf="angForm.controls['gender'].errors.required">
+            Gender is required.
+          </div>
         </div>
       </div>
-        <div class="btn-toolbar">
-          <button (click)="addCostumer(costumer)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
-          <a [routerLink]="['/index']" class="btn btn-primary">Back</a>
+
+      <div class="form-group">
+        <label class="col-sm-4 control-label" for="birthday">Birthday:</label>
+        <div class="col-sm-4">
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" class="form-control" id="birthday" formControlName="birthday" #birthday [(ngModel)]="costumer.birthday"/>
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
+
+            
         </div>
+        <div *ngIf="angForm.controls['birthday'].invalid && (angForm.controls['birthday'].dirty || angForm.controls['birthday'].touched)" class="col-sm-4">
+          <div *ngIf="angForm.controls['birthday'].errors.required">
+            Birthday is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-4 control-label" for="last_contact">Last Contact:</label>
+        <div class="col-sm-4">
+            <div class="input-group date" data-provide="datetimepicker">
+                <input type="text" class="form-control" id="last_contact" formControlName="last_contact" #last_contact [(ngModel)]="costumer.lastContact"/>
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="angForm.controls['last_contact'].invalid && (angForm.controls['last_contact'].dirty || angForm.controls['last_contact'].touched)" class="col-sm-4">
+          <div *ngIf="angForm.controls['last_contact'].errors.required">
+            Last Contact is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-4 control-label" for="costumer_lifetime_value">Costumer Lifetime Value:</label>
+        <div class="col-sm-4">
+            <div class="input-group"> 
+                <span class="input-group-addon">$</span>
+                
+                <input type="number" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control" id="costumer_lifetime_value" id="lifetime" formControlName="costumer_lifetime_value" 
+                    #costumer_lifetime_value [(ngModel)]="costumer.costumerLifetimeValue"/>
+                <!--input type="text" class="form-control" id="costumer_lifetime_value" id="lifetime" formControlName="costumer_lifetime_value" 
+                    #costumer_lifetime_value [(ngModel)]="costumer.costumerLifetimeValue"/-->
+            </div>
+            
+        </div>
+        <div *ngIf="angForm.controls['costumer_lifetime_value'].invalid && (angForm.controls['costumer_lifetime_value'].dirty || angForm.controls['costumer_lifetime_value'].touched)" class="col-sm-4">
+          <div *ngIf="angForm.controls['costumer_lifetime_value'].errors.required">
+            Costumer Lifetime Value is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-toolbar">
+        <button (click)="addCostumer(costumer)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+        <a [routerLink]="['/index']" class="btn btn-primary">Back</a>
+      </div>
     </form>
   </div>
 </div>

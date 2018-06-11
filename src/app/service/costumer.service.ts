@@ -12,14 +12,14 @@ export class CostumerService {
   result: any;
   constructor(private http: HttpClient) {}
 
-  addCostumer(costumer) {
+  addCostumer(costumer, callback, options) {
     const uri = 'http://localhost:8080/costumers/add';
   
     this
       .http
       .post(uri, costumer)
       .subscribe(res =>
-          console.log('Done'));
+          callback(options));
   }
 
   getCostumers() {
