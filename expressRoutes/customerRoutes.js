@@ -45,6 +45,9 @@ customerRoutes.route('/update/:id').post(function (req, res) {
     else {
       customer.name = req.body.name;
       customer.gender = req.body.gender;
+      customer.birthday = req.body.birthday;
+      customer.lastContact = req.body.lastContact;
+      customer.customerLifetimeValue = req.body.customerLifetimeValue;
 
       customer.save().then(customer => {
           res.json('Update complete');

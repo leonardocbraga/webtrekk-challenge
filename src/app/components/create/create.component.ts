@@ -15,7 +15,7 @@ export class CreateComponent implements OnInit {
   angForm: FormGroup;
 
   @Input()
-  customer: Customer;
+  customer: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private customerservice: CustomerService, private fb: FormBuilder) {
     this.route.params.subscribe(params => {
