@@ -37,7 +37,7 @@ export class EditComponent implements OnInit {
 
   updateCustomer(customer) {
     this.route.params.subscribe(params => {
-      this.service.updateCustomer(customer, params['id']);
+      this.service.updateCustomer(customer, params['id'], null, null);
       this.router.navigate(['index']);
     });
   }

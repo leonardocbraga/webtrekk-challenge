@@ -75,9 +75,9 @@
       <div class="form-group">
         <label class="col-sm-4 control-label" for="last_contact">Last Contact:</label>
         <div class="col-sm-4">
-            <div class="input-group date" data-provide="datetimepicker">
+            <div class="input-group date">
                 <input type="text" class="form-control" id="last_contact" formControlName="last_contact" 
-                #last_contact [(ngModel)]="customer.lastContact" datetime-picker format="MM/DD/YYYY HH:mm" readonly/>
+                #last_contact [(ngModel)]="customer.lastContact" datetime-picker format="mm/dd/yyyy hh:ii" readonly/>
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-th"></span>
                 </div>
@@ -105,7 +105,8 @@
       </div>
 
       <div class="btn-toolbar">
-        <button (click)="addCustomer(customer)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+        <button *ngIf="customer._id ? false : true" (click)="addCustomer(customer)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+        <button *ngIf="customer._id ? true : false" (click)="updateCustomer(customer)" [disabled]="angForm.invalid" class="btn btn-primary">Update</button>
         <a [routerLink]="['/index']" class="btn btn-primary">Back</a>
       </div>
     </form>

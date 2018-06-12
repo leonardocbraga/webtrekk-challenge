@@ -53,7 +53,13 @@ export class CreateComponent implements OnInit {
   }
 
   addCustomer(customer: Customer) {
-      this.customerservice.addCustomer(customer, this.navigate, {router: this.router});
+    this.customerservice.addCustomer(customer, this.navigate, {router: this.router});
+  }
+
+  updateCustomer(customer) {
+    this.route.params.subscribe(params => {
+      this.customerservice.updateCustomer(customer, params['id'], this.navigate, {router: this.router});
+    });
   }
 
   navigate(options){

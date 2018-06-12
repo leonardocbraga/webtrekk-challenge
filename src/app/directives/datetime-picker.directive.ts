@@ -21,15 +21,17 @@ export class DatetimePickerDirective implements ControlValueAccessor {
 
   @Input('changeMonth') changeMonth:boolean = true;
   @Input('changeYear') changeYear:boolean = true;
-  @Input('format') format:string = 'MM/dd/yyyy';
+  @Input('format') format:string = 'mm/dd/yyyy hh:ii';
 
   constructor(private el: ElementRef) {
     this.element = this.el.nativeElement;
+  }
 
-    $(this.el.nativeElement).datetimepicker({
+  ngAfterViewInit() {
+    $(this.el.nativeElement.parentElement).datetimepicker({
       changeMonth: true,
       changeYear: true,
-      dateFormat: this.format
+      format: this.format
     }).on('change', e => this.onChange(e.target.value));
   }
 
@@ -49,7 +51,7 @@ export class DatetimePickerDirective implements ControlValueAccessor {
   }
 
   writeValue(val: string) : void {
-    this.element.value = moment(val).format(this.format);
+    this.element.value = val ? moment(val).format('MM/DD/YYYY HH:mm') : '';
     this.innerValue = val;
   }
 

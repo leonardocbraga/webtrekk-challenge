@@ -46,13 +46,13 @@ export class CustomerService {
             );
   }
 
-  updateCustomer(customer, id) {
+  updateCustomer(customer, id, callback, options) {
     const uri = 'http://localhost:8080/customers/update/' + id;
 
     this
       .http
       .post(uri, customer)
-      .subscribe(res => console.log('Done'));
+      .subscribe(res => callback(options));
   }
 
   deleteCustomer(id) {

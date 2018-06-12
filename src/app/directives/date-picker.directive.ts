@@ -50,7 +50,7 @@ export class DatePickerDirective implements ControlValueAccessor {
   }
 
   writeValue(val: string) : void {
-    this.element.value = moment(val).format(this.format.toUpperCase());
+    this.element.value = val ? moment(val).format(this.format.toUpperCase()) : '';
     this.innerValue = val;
   }
 
