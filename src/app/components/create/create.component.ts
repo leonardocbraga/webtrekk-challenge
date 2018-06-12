@@ -26,24 +26,20 @@ export class CreateComponent implements OnInit {
           console.log(this.customer);
         });
       }else{
-        this.newCostumer();
+        this.customer = {
+          name: {
+            first: '',
+            last: ''
+          },
+          gender: 'm',
+          birthday: null,
+          lastContact: null,
+          customerLifetimeValue: null
+        };
       }
     });
 
     this.createForm();
-  }
-
-  newCustomer() {
-    this.customer = {
-      name: {
-        first: '',
-        last: ''
-      },
-      gender: 'm',
-      birthday: null,
-      lastContact: null,
-      customerLifetimeValue: null
-    };
   }
 
   createForm() {
