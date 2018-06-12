@@ -56,7 +56,7 @@
         <label class="col-sm-4 control-label" for="birthday">Birthday:</label>
         <div class="col-sm-4">
             <div class="input-group date" data-provide="datepicker">
-                <input type="text" class="form-control" id="birthday" date-picker readonly
+                <input type="text" class="form-control" id="birthday" date-picker format="MM/dd/yyyy" readonly
                   formControlName="birthday" #birthday [(ngModel)]="customer.birthday"/>
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-th"></span>
@@ -77,7 +77,7 @@
         <div class="col-sm-4">
             <div class="input-group date" data-provide="datetimepicker">
                 <input type="text" class="form-control" id="last_contact" formControlName="last_contact" 
-                #last_contact [(ngModel)]="customer.lastContact" datetime-picker readonly/>
+                #last_contact [(ngModel)]="customer.lastContact" datetime-picker format="MM/DD/YYYY HH:mm" readonly/>
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-th"></span>
                 </div>

@@ -1,5 +1,6 @@
 import {Directive, ElementRef, Input, forwardRef} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import * as moment from 'moment';
 
 declare  var $:any;
 
@@ -15,17 +16,21 @@ export const CUSTOM_INPUT_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_INPUT_DATE_PICKER_CONTROL_VALUE_ACCESSOR]
 })
 export class DatePickerDirective implements ControlValueAccessor {
+  private element: HTMLInputElement;
   private innerValue: string;
 
   @Input('changeMonth') changeMonth:boolean = true;
   @Input('changeYear') changeYear:boolean = true;
+  @Input('format') format:string = 'MM/dd/yyyy';
 
   constructor(private el: ElementRef) {
+    this.element = this.el.nativeElement;
+
     $(this.el.nativeElement).datepicker({
       changeMonth: true,
       changeYear: true,
       autoclose: true,
-      dateFormat: 'MM/dd/yyyy'
+      dateFormat: this.format
     }).on('change', e => this.onChange(e.target.value));
   }
 
@@ -45,6 +50,7 @@ export class DatePickerDirective implements ControlValueAccessor {
   }
 
   writeValue(val: string) : void {
+    this.element.value = moment(val).format(this.format.toUpperCase());
     this.innerValue = val;
   }
 

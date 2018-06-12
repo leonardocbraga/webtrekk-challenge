@@ -23,7 +23,6 @@ export class CreateComponent implements OnInit {
       if(params['id']){
         this.customer = this.customerservice.editCustomer(params['id']).subscribe(res => {
           this.customer = res;
-          console.log(this.customer);
         });
       }else{
         this.customer = {

@@ -459,7 +459,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel panel-primary\">\n  <div class=\"panel-heading\">\n    {{ title }}\n  </div>\n  <div *ngIf=\"customer\" class=\"panel-body\" >\n    <form [formGroup]=\"angForm\" novalidate class=\"form-horizontal\">\n      \n      <div class=\"form-group\" *ngIf=\"customer.name\">\n        <label class=\"col-sm-4 control-label\" for=\"first_name\">First Name:</label>\n        <div class=\"col-sm-4\">\n            <input type=\"text\" class=\"form-control\" formControlName=\"first_name\" #first_name [(ngModel)]=\"customer.name.first\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)\" class=\"col-sm-4\">\n            <div *ngIf=\"angForm.controls['first_name'].errors.required\">\n              First Name is required.\n            </div>\n          </div>\n      </div>\n\n      <div class=\"form-group\" *ngIf=\"customer.name\">\n        <label class=\"col-sm-4 control-label\" for=\"last_name\">Last Name:</label>\n        <div class=\"col-sm-4\">\n            <input type=\"text\" class=\"form-control\" formControlName=\"last_name\" #last_name [(ngModel)]=\"customer.name.last\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)\" class=\"col-sm-4\">\n            <div *ngIf=\"angForm.controls['last_name'].errors.required\">\n              Last Name is required.\n            </div>\n          </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label class=\"col-sm-4 control-label\">Gender:</label>\n        <div class=\"col-sm-4\">\n            <div id=\"input-type\" class=\"row\">\n              <div class=\"col-sm-6\">\n                  <label class=\"radio-inline\">\n                      <input class=\"form-check-input\" type=\"radio\" id=\"man_gender\" formControlName=\"gender\" #gender [(ngModel)]=\"customer.gender\" value=\"m\" checked>Man\n                  </label>\n              </div>\n              <div class=\"col-sm-6\">\n                  <label class=\"radio-inline\">\n                      <input class=\"form-check-input\" type=\"radio\" id=\"woman_gender\" formControlName=\"gender\" #gender [(ngModel)]=\"customer.gender\" value=\"w\">Woman\n                  </label>\n              </div>\n            </div>\n        </div>\n        <div *ngIf=\"angForm.controls['gender'].invalid && (angForm.controls['gender'].dirty || angForm.controls['gender'].touched)\" class=\"col-sm-4\">\n          <div *ngIf=\"angForm.controls['gender'].errors.required\">\n            Gender is required.\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label class=\"col-sm-4 control-label\" for=\"birthday\">Birthday:</label>\n        <div class=\"col-sm-4\">\n            <div class=\"input-group date\" data-provide=\"datepicker\">\n                <input type=\"text\" class=\"form-control\" id=\"birthday\" date-picker readonly\n                  formControlName=\"birthday\" #birthday [(ngModel)]=\"customer.birthday\"/>\n                <div class=\"input-group-addon\">\n                    <span class=\"glyphicon glyphicon-th\"></span>\n                </div>\n            </div>\n\n            \n        </div>\n        <div *ngIf=\"angForm.controls['birthday'].invalid && (angForm.controls['birthday'].dirty || angForm.controls['birthday'].touched)\" class=\"col-sm-4\">\n          <div *ngIf=\"angForm.controls['birthday'].errors.required\">\n            Birthday is required.\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label class=\"col-sm-4 control-label\" for=\"last_contact\">Last Contact:</label>\n        <div class=\"col-sm-4\">\n            <div class=\"input-group date\" data-provide=\"datetimepicker\">\n                <input type=\"text\" class=\"form-control\" id=\"last_contact\" formControlName=\"last_contact\" \n                #last_contact [(ngModel)]=\"customer.lastContact\" datetime-picker readonly/>\n                <div class=\"input-group-addon\">\n                    <span class=\"glyphicon glyphicon-th\"></span>\n                </div>\n            </div>\n        </div>\n        <div *ngIf=\"angForm.controls['last_contact'].invalid && (angForm.controls['last_contact'].dirty || angForm.controls['last_contact'].touched)\" class=\"col-sm-4\">\n          <div *ngIf=\"angForm.controls['last_contact'].errors.required\">\n            Last Contact is required.\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label class=\"col-sm-4 control-label\" for=\"customer_lifetime_value\">Customer Lifetime Value:</label>\n        <div class=\"col-sm-4\">\n            <input type=\"text\" class=\"form-control\" id=\"customer_lifetime_value\" id=\"lifetime\" \n                  formControlName=\"customer_lifetime_value\" appCurrencyMask=\"9.99\"\n                  #customer_lifetime_value [(ngModel)]=\"customer.customerLifetimeValue\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['customer_lifetime_value'].invalid && (angForm.controls['customer_lifetime_value'].dirty || angForm.controls['customer_lifetime_value'].touched)\" class=\"col-sm-4\">\n          <div *ngIf=\"angForm.controls['customer_lifetime_value'].errors.required\">\n            Customer Lifetime Value is required.\n          </div>\n        </div>\n      </div>\n\n      <div class=\"btn-toolbar\">\n        <button (click)=\"addCustomer(customer)\" [disabled]=\"angForm.pristine || angForm.invalid\" class=\"btn btn-primary\">Add</button>\n        <a [routerLink]=\"['/index']\" class=\"btn btn-primary\">Back</a>\n      </div>\n    </form>\n  </div>\n</div>"
+module.exports = "<div class=\"panel panel-primary\">\n  <div class=\"panel-heading\">\n    {{ title }}\n  </div>\n  <div *ngIf=\"customer\" class=\"panel-body\" >\n    <form [formGroup]=\"angForm\" novalidate class=\"form-horizontal\">\n      \n      <div class=\"form-group\" *ngIf=\"customer.name\">\n        <label class=\"col-sm-4 control-label\" for=\"first_name\">First Name:</label>\n        <div class=\"col-sm-4\">\n            <input type=\"text\" class=\"form-control\" formControlName=\"first_name\" #first_name [(ngModel)]=\"customer.name.first\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)\" class=\"col-sm-4\">\n            <div *ngIf=\"angForm.controls['first_name'].errors.required\">\n              First Name is required.\n            </div>\n          </div>\n      </div>\n\n      <div class=\"form-group\" *ngIf=\"customer.name\">\n        <label class=\"col-sm-4 control-label\" for=\"last_name\">Last Name:</label>\n        <div class=\"col-sm-4\">\n            <input type=\"text\" class=\"form-control\" formControlName=\"last_name\" #last_name [(ngModel)]=\"customer.name.last\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)\" class=\"col-sm-4\">\n            <div *ngIf=\"angForm.controls['last_name'].errors.required\">\n              Last Name is required.\n            </div>\n          </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label class=\"col-sm-4 control-label\">Gender:</label>\n        <div class=\"col-sm-4\">\n            <div id=\"input-type\" class=\"row\">\n              <div class=\"col-sm-6\">\n                  <label class=\"radio-inline\">\n                      <input class=\"form-check-input\" type=\"radio\" id=\"man_gender\" formControlName=\"gender\" #gender [(ngModel)]=\"customer.gender\" value=\"m\" checked>Man\n                  </label>\n              </div>\n              <div class=\"col-sm-6\">\n                  <label class=\"radio-inline\">\n                      <input class=\"form-check-input\" type=\"radio\" id=\"woman_gender\" formControlName=\"gender\" #gender [(ngModel)]=\"customer.gender\" value=\"w\">Woman\n                  </label>\n              </div>\n            </div>\n        </div>\n        <div *ngIf=\"angForm.controls['gender'].invalid && (angForm.controls['gender'].dirty || angForm.controls['gender'].touched)\" class=\"col-sm-4\">\n          <div *ngIf=\"angForm.controls['gender'].errors.required\">\n            Gender is required.\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label class=\"col-sm-4 control-label\" for=\"birthday\">Birthday:</label>\n        <div class=\"col-sm-4\">\n            <div class=\"input-group date\" data-provide=\"datepicker\">\n                <input type=\"text\" class=\"form-control\" id=\"birthday\" date-picker format=\"MM/dd/yyyy\" readonly\n                  formControlName=\"birthday\" #birthday [(ngModel)]=\"customer.birthday\"/>\n                <div class=\"input-group-addon\">\n                    <span class=\"glyphicon glyphicon-th\"></span>\n                </div>\n            </div>\n\n            \n        </div>\n        <div *ngIf=\"angForm.controls['birthday'].invalid && (angForm.controls['birthday'].dirty || angForm.controls['birthday'].touched)\" class=\"col-sm-4\">\n          <div *ngIf=\"angForm.controls['birthday'].errors.required\">\n            Birthday is required.\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label class=\"col-sm-4 control-label\" for=\"last_contact\">Last Contact:</label>\n        <div class=\"col-sm-4\">\n            <div class=\"input-group date\" data-provide=\"datetimepicker\">\n                <input type=\"text\" class=\"form-control\" id=\"last_contact\" formControlName=\"last_contact\" \n                #last_contact [(ngModel)]=\"customer.lastContact\" datetime-picker format=\"MM/DD/YYYY HH:mm\" readonly/>\n                <div class=\"input-group-addon\">\n                    <span class=\"glyphicon glyphicon-th\"></span>\n                </div>\n            </div>\n        </div>\n        <div *ngIf=\"angForm.controls['last_contact'].invalid && (angForm.controls['last_contact'].dirty || angForm.controls['last_contact'].touched)\" class=\"col-sm-4\">\n          <div *ngIf=\"angForm.controls['last_contact'].errors.required\">\n            Last Contact is required.\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label class=\"col-sm-4 control-label\" for=\"customer_lifetime_value\">Customer Lifetime Value:</label>\n        <div class=\"col-sm-4\">\n            <input type=\"text\" class=\"form-control\" id=\"customer_lifetime_value\" id=\"lifetime\" \n                  formControlName=\"customer_lifetime_value\" appCurrencyMask=\"9.99\"\n                  #customer_lifetime_value [(ngModel)]=\"customer.customerLifetimeValue\"/>\n        </div>\n        <div *ngIf=\"angForm.controls['customer_lifetime_value'].invalid && (angForm.controls['customer_lifetime_value'].dirty || angForm.controls['customer_lifetime_value'].touched)\" class=\"col-sm-4\">\n          <div *ngIf=\"angForm.controls['customer_lifetime_value'].errors.required\">\n            Customer Lifetime Value is required.\n          </div>\n        </div>\n      </div>\n\n      <div class=\"btn-toolbar\">\n        <button (click)=\"addCustomer(customer)\" [disabled]=\"angForm.pristine || angForm.invalid\" class=\"btn btn-primary\">Add</button>\n        <a [routerLink]=\"['/index']\" class=\"btn btn-primary\">Back</a>\n      </div>\n    </form>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -502,7 +502,6 @@ var CreateComponent = /** @class */ (function () {
             if (params['id']) {
                 _this.customer = _this.customerservice.editCustomer(params['id']).subscribe(function (res) {
                     _this.customer = res;
-                    console.log(_this.customer);
                 });
             }
             else {
@@ -906,6 +905,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DatePickerDirective", function() { return DatePickerDirective; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -915,6 +916,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var CUSTOM_INPUT_DATE_PICKER_CONTROL_VALUE_ACCESSOR = {
@@ -928,13 +930,15 @@ var DatePickerDirective = /** @class */ (function () {
         this.el = el;
         this.changeMonth = true;
         this.changeYear = true;
+        this.format = 'MM/dd/yyyy';
         this.onChange = function (_) { };
         this.onTouched = function () { };
+        this.element = this.el.nativeElement;
         $(this.el.nativeElement).datepicker({
             changeMonth: true,
             changeYear: true,
             autoclose: true,
-            dateFormat: 'MM/dd/yyyy'
+            dateFormat: this.format
         }).on('change', function (e) { return _this.onChange(e.target.value); });
     }
     Object.defineProperty(DatePickerDirective.prototype, "value", {
@@ -953,6 +957,7 @@ var DatePickerDirective = /** @class */ (function () {
     });
     ;
     DatePickerDirective.prototype.writeValue = function (val) {
+        this.element.value = moment__WEBPACK_IMPORTED_MODULE_2__(val).format(this.format.toUpperCase());
         this.innerValue = val;
     };
     DatePickerDirective.prototype.registerOnChange = function (fn) {
@@ -969,6 +974,10 @@ var DatePickerDirective = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('changeYear'),
         __metadata("design:type", Boolean)
     ], DatePickerDirective.prototype, "changeYear", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('format'),
+        __metadata("design:type", String)
+    ], DatePickerDirective.prototype, "format", void 0);
     DatePickerDirective = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
             selector: '[date-picker]',
@@ -997,6 +1006,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DatetimePickerDirective", function() { return DatetimePickerDirective; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1006,6 +1017,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var CUSTOM_INPUT_DATE_PICKER_CONTROL_VALUE_ACCESSOR = {
@@ -1019,12 +1031,14 @@ var DatetimePickerDirective = /** @class */ (function () {
         this.el = el;
         this.changeMonth = true;
         this.changeYear = true;
+        this.format = 'MM/dd/yyyy';
         this.onChange = function (_) { };
         this.onTouched = function () { };
+        this.element = this.el.nativeElement;
         $(this.el.nativeElement).datetimepicker({
             changeMonth: true,
             changeYear: true,
-            dateFormat: 'MM/dd/yyyy'
+            dateFormat: this.format
         }).on('change', function (e) { return _this.onChange(e.target.value); });
     }
     Object.defineProperty(DatetimePickerDirective.prototype, "value", {
@@ -1043,6 +1057,7 @@ var DatetimePickerDirective = /** @class */ (function () {
     });
     ;
     DatetimePickerDirective.prototype.writeValue = function (val) {
+        this.element.value = moment__WEBPACK_IMPORTED_MODULE_2__(val).format(this.format);
         this.innerValue = val;
     };
     DatetimePickerDirective.prototype.registerOnChange = function (fn) {
@@ -1059,6 +1074,10 @@ var DatetimePickerDirective = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('changeYear'),
         __metadata("design:type", Boolean)
     ], DatetimePickerDirective.prototype, "changeYear", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('format'),
+        __metadata("design:type", String)
+    ], DatetimePickerDirective.prototype, "format", void 0);
     DatetimePickerDirective = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
             selector: '[datetime-picker]',
