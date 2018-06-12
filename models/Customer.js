@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // Define collection and schema for Items
-var Costumer = new Schema({
+var Customer = new Schema({
     name: {
         first: {type: String},
         last: {type: String}
@@ -20,7 +20,7 @@ var Costumer = new Schema({
         type: Number
     }
 },{
-    collection: 'costumers'
+    collection: 'customers'
 });
 
-module.exports = mongoose.model('Costumer', Costumer);
+module.exports = mongoose.model('Customer', Customer);

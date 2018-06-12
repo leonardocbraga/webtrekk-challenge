@@ -1,4 +1,4 @@
-import { CostumerService } from './../../service/costumer.service';
+import { CustomerService } from './../../service/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -11,25 +11,25 @@ import { Observable } from 'rxjs';
 })
 export class IndexComponent implements OnInit {
 
-  costumers: any;
+  customers: any;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private service: CostumerService) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private service: CustomerService) {}
 
   ngOnInit() {
-    this.getCostumers();
+    this.getCustomers();
   }
 
-  getCostumers() {
-    this.service.getCostumers().subscribe(res => {
-      this.costumers = res;
+  getCustomers() {
+    this.service.getCustomers().subscribe(res => {
+      this.customers = res;
     });
   }
 
-  deleteCostumer(id) {
-    this.service.deleteCostumer(id).subscribe(res => {
+  deleteCustomer(id) {
+    this.service.deleteCustomer(id).subscribe(res => {
       console.log('Deleted');
       //this.router.navigate(['index']);
-      this.getCostumers();
+      this.getCustomers();
     });
   }
 }

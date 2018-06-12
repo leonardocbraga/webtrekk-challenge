@@ -8,23 +8,23 @@
       <td>Gender</td>
       <td>Birthday</td>
       <td>Last Contact</td>
-      <td>Costumer Lifetime Value</td>
+      <td>Customer Lifetime Value</td>
       <td>Actions</td>
   </tr>
   </thead>
 
   <tbody>
-      <tr *ngFor="let costumer of costumers">
-          <td>{{ costumer.name.first }}</td>
-          <td>{{ costumer.name.last }}</td>
-          <td>{{ costumer.gender }}</td>
-          <td>{{ costumer.birthday | date: 'MM/dd/yyyy' }}</td>
-          <td>{{ costumer.lastContact | date: 'MM/dd/yyyy HH:mm:ss' }}</td>
-          <td>{{ costumer.costumerLifetimeValue }}</td>
+      <tr *ngFor="let customer of customers">
+          <td>{{ customer.name.first }}</td>
+          <td>{{ customer.name.last }}</td>
+          <td>{{ customer.gender }}</td>
+          <td>{{ customer.birthday | date: 'MM/dd/yyyy' }}</td>
+          <td>{{ customer.lastContact | date: 'MM/dd/yyyy HH:mm:ss' }}</td>
+          <td>{{ customer.customerLifetimeValue }}</td>
           <td>
             <div>
-                <a [routerLink]="['/edit', costumer._id]" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
-                <button (click)="deleteCostumer(costumer._id)"  class="btn btn-default"><i class="glyphicon glyphicon-trash"></i></button>
+                <a [routerLink]="['/create', customer._id]" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+                <button (click)="deleteCustomer(customer._id)"  class="btn btn-default"><i class="glyphicon glyphicon-trash"></i></button>
             </div>
           </td>
       </tr>

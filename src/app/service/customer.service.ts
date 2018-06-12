@@ -7,23 +7,23 @@ import { map } from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class CostumerService {
+export class CustomerService {
 
   result: any;
   constructor(private http: HttpClient) {}
 
-  addCostumer(costumer, callback, options) {
-    const uri = 'http://localhost:8080/costumers/add';
+  addCustomer(customer, callback, options) {
+    const uri = 'http://localhost:8080/customers/add';
   
     this
       .http
-      .post(uri, costumer)
+      .post(uri, customer)
       .subscribe(res =>
           callback(options));
   }
 
-  getCostumers() {
-    const uri = 'http://localhost:8080/costumers';
+  getCustomers() {
+    const uri = 'http://localhost:8080/customers';
     return this
             .http
             .get(uri)
@@ -34,8 +34,8 @@ export class CostumerService {
             );
   }
 
-  editCostumer(id) {
-    const uri = 'http://localhost:8080/costumers/edit/' + id;
+  editCustomer(id) {
+    const uri = 'http://localhost:8080/customers/edit/' + id;
     return this
             .http
             .get(uri)
@@ -46,17 +46,17 @@ export class CostumerService {
             );
   }
 
-  updateCostumer(costumer, id) {
-    const uri = 'http://localhost:8080/costumers/update/' + id;
+  updateCustomer(customer, id) {
+    const uri = 'http://localhost:8080/customers/update/' + id;
 
     this
       .http
-      .post(uri, costumer)
+      .post(uri, customer)
       .subscribe(res => console.log('Done'));
   }
 
-  deleteCostumer(id) {
-    const uri = 'http://localhost:8080/costumers/delete/' + id;
+  deleteCustomer(id) {
+    const uri = 'http://localhost:8080/customers/delete/' + id;
 
         return this
             .http

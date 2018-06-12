@@ -6,13 +6,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { KzMaskDirective } from './directives/kz-mask.directive';
 import { KzPikadayDirective } from './directives/kz-pikaday.directive';
+import { DatePickerDirective } from './directives/date-picker.directive';
+import { DatetimePickerDirective } from './directives/datetime-picker.directive';
+import { CurrencyMaskDirective } from './directives/currency-mask.directive';
+import { CurrencyMaskService } from './service/currency-mask.service';
+
 import { AppComponent } from './app.component';
 import { IndexComponent } from './components/index/index.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 import { appRoutes } from './routerConfig';
 
-import { CostumerService } from './service/costumer.service';
+import { CustomerService } from './service/customer.service';
 
 @NgModule({
   declarations: [
@@ -21,12 +26,15 @@ import { CostumerService } from './service/costumer.service';
     CreateComponent,
     EditComponent,
     KzMaskDirective,
-    KzPikadayDirective
+    KzPikadayDirective,
+    CurrencyMaskDirective,
+    DatePickerDirective,
+    DatetimePickerDirective
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule, ReactiveFormsModule
   ],
-  providers: [CostumerService],
+  providers: [CustomerService, CurrencyMaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

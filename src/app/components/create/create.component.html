@@ -2,13 +2,13 @@
   <div class="panel-heading">
     {{ title }}
   </div>
-  <div class="panel-body" ng-controller="DatepickerController">
+  <div *ngIf="customer" class="panel-body" >
     <form [formGroup]="angForm" novalidate class="form-horizontal">
       
-      <div class="form-group">
+      <div class="form-group" *ngIf="customer.name">
         <label class="col-sm-4 control-label" for="first_name">First Name:</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" formControlName="first_name" #first_name [(ngModel)]="costumer.name.first"/>
+            <input type="text" class="form-control" formControlName="first_name" #first_name [(ngModel)]="customer.name.first"/>
         </div>
         <div *ngIf="angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)" class="col-sm-4">
             <div *ngIf="angForm.controls['first_name'].errors.required">
@@ -17,10 +17,10 @@
           </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="customer.name">
         <label class="col-sm-4 control-label" for="last_name">Last Name:</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" formControlName="last_name" #last_name [(ngModel)]="costumer.name.last"/>
+            <input type="text" class="form-control" formControlName="last_name" #last_name [(ngModel)]="customer.name.last"/>
         </div>
         <div *ngIf="angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)" class="col-sm-4">
             <div *ngIf="angForm.controls['last_name'].errors.required">
@@ -35,12 +35,12 @@
             <div id="input-type" class="row">
               <div class="col-sm-6">
                   <label class="radio-inline">
-                      <input class="form-check-input" type="radio" id="man_gender" formControlName="gender" #gender [(ngModel)]="costumer.gender" value="m" checked>Man
+                      <input class="form-check-input" type="radio" id="man_gender" formControlName="gender" #gender [(ngModel)]="customer.gender" value="m" checked>Man
                   </label>
               </div>
               <div class="col-sm-6">
                   <label class="radio-inline">
-                      <input class="form-check-input" type="radio" id="woman_gender" formControlName="gender" #gender [(ngModel)]="costumer.gender" value="w">Woman
+                      <input class="form-check-input" type="radio" id="woman_gender" formControlName="gender" #gender [(ngModel)]="customer.gender" value="w">Woman
                   </label>
               </div>
             </div>
@@ -55,9 +55,9 @@
       <div class="form-group">
         <label class="col-sm-4 control-label" for="birthday">Birthday:</label>
         <div class="col-sm-4">
-            <div class="input-group date wdatepicker" data-provide="datepicker">
-                <input type="text" class="form-control" id="birthday" 
-                  formControlName="birthday" #birthday [(ngModel)]="costumer.birthday"/>
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" class="form-control" id="birthday" date-picker readonly
+                  formControlName="birthday" #birthday [(ngModel)]="customer.birthday"/>
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-th"></span>
                 </div>
@@ -75,9 +75,9 @@
       <div class="form-group">
         <label class="col-sm-4 control-label" for="last_contact">Last Contact:</label>
         <div class="col-sm-4">
-            <div class="input-group date wdatetimepicker" data-provide="datetimepicker">
+            <div class="input-group date" data-provide="datetimepicker">
                 <input type="text" class="form-control" id="last_contact" formControlName="last_contact" 
-                #last_contact [(ngModel)]="costumer.lastContact"/>
+                #last_contact [(ngModel)]="customer.lastContact" datetime-picker readonly/>
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-th"></span>
                 </div>
@@ -91,21 +91,21 @@
       </div>
 
       <div class="form-group">
-        <label class="col-sm-4 control-label" for="costumer_lifetime_value">Costumer Lifetime Value:</label>
+        <label class="col-sm-4 control-label" for="customer_lifetime_value">Customer Lifetime Value:</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" id="costumer_lifetime_value" id="lifetime" 
-                  formControlName="costumer_lifetime_value" money-mask
-                  #costumer_lifetime_value [(ngModel)]="costumer.costumerLifetimeValue"/>
+            <input type="text" class="form-control" id="customer_lifetime_value" id="lifetime" 
+                  formControlName="customer_lifetime_value" appCurrencyMask="9.99"
+                  #customer_lifetime_value [(ngModel)]="customer.customerLifetimeValue"/>
         </div>
-        <div *ngIf="angForm.controls['costumer_lifetime_value'].invalid && (angForm.controls['costumer_lifetime_value'].dirty || angForm.controls['costumer_lifetime_value'].touched)" class="col-sm-4">
-          <div *ngIf="angForm.controls['costumer_lifetime_value'].errors.required">
-            Costumer Lifetime Value is required.
+        <div *ngIf="angForm.controls['customer_lifetime_value'].invalid && (angForm.controls['customer_lifetime_value'].dirty || angForm.controls['customer_lifetime_value'].touched)" class="col-sm-4">
+          <div *ngIf="angForm.controls['customer_lifetime_value'].errors.required">
+            Customer Lifetime Value is required.
           </div>
         </div>
       </div>
 
       <div class="btn-toolbar">
-        <button (click)="addCostumer(costumer)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+        <button (click)="addCustomer(customer)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
         <a [routerLink]="['/index']" class="btn btn-primary">Back</a>
       </div>
     </form>

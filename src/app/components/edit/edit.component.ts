@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CostumerService } from './../../service/costumer.service';
+import { CustomerService } from './../../service/customer.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
-import { Costumer } from "../../model/costumer"
+import { Customer } from "../../model/customer"
 
 @Component({
   selector: 'app-edit',
@@ -12,15 +12,15 @@ import { Costumer } from "../../model/costumer"
 export class EditComponent implements OnInit {
 
   @Input()
-  costumer: any;
+  customer: any;
 
   angForm: FormGroup;
-  title = 'Edit Costumer';
+  title = 'Edit Customer';
 
-  constructor(private route: ActivatedRoute, private router: Router, private service: CostumerService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private router: Router, private service: CustomerService, private fb: FormBuilder) {
     this.route.params.subscribe(params => {
-      this.costumer = this.service.editCostumer(params['id']).subscribe(res => {
-        this.costumer = res;
+      this.customer = this.service.editCustomer(params['id']).subscribe(res => {
+        this.customer = res;
        
       });
     });
@@ -35,15 +35,15 @@ export class EditComponent implements OnInit {
    });
   }
 
-  updateCostumer(costumer) {
+  updateCustomer(customer) {
     this.route.params.subscribe(params => {
-      this.service.updateCostumer(costumer, params['id']);
+      this.service.updateCustomer(customer, params['id']);
       this.router.navigate(['index']);
     });
   }
 
-  deleteCostumer(id) {
-    this.service.deleteCostumer(id).subscribe(res => {
+  deleteCustomer(id) {
+    this.service.deleteCustomer(id).subscribe(res => {
       console.log('Deleted');
     });
   }

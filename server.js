@@ -4,7 +4,7 @@ const express = require('express'),
       cors = require('cors'),
       mongoose = require('mongoose'),
       config = require('./config/DB'),
-      costumerRoutes = require('./expressRoutes/costumerRoutes');
+      customerRoutes = require('./expressRoutes/customerRoutes');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB).then(
@@ -17,7 +17,7 @@ const app = express();
   app.use(cors());
 const port = process.env.PORT || 8080;
 
-app.use('/costumers', costumerRoutes);
+app.use('/customers', customerRoutes);
 
 var distDir = __dirname + "/public/";
 app.use(express.static(distDir));

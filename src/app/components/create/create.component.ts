@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CostumerService } from '../../service/costumer.service';
+import { CustomerService } from '../../service/customer.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
-import { Costumer } from "../../model/costumer"
+import { Customer } from "../../model/customer"
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,14 +11,30 @@ import { Observable } from 'rxjs';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  title = 'Add Costumer';
+  title = 'Add Customer';
   angForm: FormGroup;
 
   @Input()
-  costumer: Costumer;
+  customer: Customer;
 
-  constructor(private route: ActivatedRoute, private router: Router, private costumerservice: CostumerService, private fb: FormBuilder) {
-    this.costumer = {
+  constructor(private route: ActivatedRoute, private router: Router, private customerservice: CustomerService, private fb: FormBuilder) {
+    this.route.params.subscribe(params => {
+      
+      if(params['id']){
+        this.customer = this.customerservice.editCustomer(params['id']).subscribe(res => {
+          this.customer = res;
+          console.log(this.customer);
+        });
+      }else{
+        this.newCostumer();
+      }
+    });
+
+    this.createForm();
+  }
+
+  newCustomer() {
+    this.customer = {
       name: {
         first: '',
         last: ''
@@ -28,8 +44,6 @@ export class CreateComponent implements OnInit {
       lastContact: null,
       customerLifetimeValue: null
     };
-
-    this.createForm();
   }
 
   createForm() {
@@ -39,12 +53,12 @@ export class CreateComponent implements OnInit {
       birthday: ['', Validators.required ],
       gender: ['', Validators.required ],
       last_contact: ['', Validators.required ],
-      costumer_lifetime_value: ['', Validators.required ]
+      customer_lifetime_value: ['', Validators.required ]
     });
   }
 
-  addCostumer(costumer: Costumer) {
-      this.costumerservice.addCostumer(costumer, this.navigate, {router: this.router});
+  addCustomer(customer: Customer) {
+      this.customerservice.addCustomer(customer, this.navigate, {router: this.router});
   }
 
   navigate(options){

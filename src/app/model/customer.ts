@@ -1,4 +1,4 @@
-export class Costumer {
+export class Customer {
     _id?: string;
     name: {
         first: string;

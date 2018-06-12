@@ -8,8 +8,8 @@ export const appRoutes: Routes = [
     component: CreateComponent 
   },
   {
-    path: 'edit/:id',
-    component: EditComponent
+    path: 'create/:id',
+    component: CreateComponent
   },
   { path: 'index',
     component: IndexComponent
