@@ -1447,7 +1447,7 @@ var CustomerService = /** @class */ (function () {
         this.http = http;
     }
     CustomerService.prototype.addCustomer = function (customer, callback, options) {
-        var uri = '/customers/add';
+        var uri = 'http://localhost:8080/customers/add';
         this
             .http
             .post(uri, customer)
@@ -1456,7 +1456,7 @@ var CustomerService = /** @class */ (function () {
         });
     };
     CustomerService.prototype.getCustomers = function () {
-        var uri = 'http://localhost:8080/customers';
+        var uri = '/customers/';
         return this
             .http
             .get(uri)
