@@ -12,14 +12,14 @@ export class CustomerService {
   result: any;
   constructor(private http: HttpClient) {}
 
-  addCustomer(customer, callback, options) {
+  addCustomer(customer, callback?, options?) {
     const uri = '/customers/add';
   
     this
       .http
       .post(uri, customer)
       .subscribe(res =>
-          callback(options));
+          callback ? callback(options) : console.log('Done'));
   }
 
   getCustomers() {
@@ -46,13 +46,13 @@ export class CustomerService {
             );
   }
 
-  updateCustomer(customer, id, callback, options) {
+  updateCustomer(customer, id, callback?, options?) {
     const uri = '/customers/update/' + id;
 
     this
       .http
       .post(uri, customer)
-      .subscribe(res => callback(options));
+      .subscribe(res => callback ? callback(options) : console.log('Done'));
   }
 
   deleteCustomer(id) {

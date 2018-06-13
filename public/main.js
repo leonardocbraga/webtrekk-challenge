@@ -1452,7 +1452,7 @@ var CustomerService = /** @class */ (function () {
             .http
             .post(uri, customer)
             .subscribe(function (res) {
-            return callback(options);
+            return callback ? callback(options) : console.log('Done');
         });
     };
     CustomerService.prototype.getCustomers = function () {
@@ -1478,7 +1478,7 @@ var CustomerService = /** @class */ (function () {
         this
             .http
             .post(uri, customer)
-            .subscribe(function (res) { return callback(options); });
+            .subscribe(function (res) { return callback ? callback(options) : console.log('Done'); });
     };
     CustomerService.prototype.deleteCustomer = function (id) {
         var uri = '/customers/delete/' + id;
