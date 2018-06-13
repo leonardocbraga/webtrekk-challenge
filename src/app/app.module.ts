@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { KzMaskDirective } from './directives/kz-mask.directive';
 import { KzPikadayDirective } from './directives/kz-pikaday.directive';
@@ -14,7 +14,6 @@ import { CurrencyMaskService } from './service/currency-mask.service';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './components/index/index.component';
 import { CreateComponent } from './components/create/create.component';
-import { EditComponent } from './components/edit/edit.component';
 import { appRoutes } from './routerConfig';
 
 import { CustomerService } from './service/customer.service';
@@ -24,7 +23,6 @@ import { CustomerService } from './service/customer.service';
     AppComponent,
     IndexComponent,
     CreateComponent,
-    EditComponent,
     KzMaskDirective,
     KzPikadayDirective,
     CurrencyMaskDirective,
@@ -32,7 +30,7 @@ import { CustomerService } from './service/customer.service';
     DatetimePickerDirective
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule, ReactiveFormsModule
+    BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule, ReactiveFormsModule, FormsModule
   ],
   providers: [CustomerService, CurrencyMaskService],
   bootstrap: [AppComponent]

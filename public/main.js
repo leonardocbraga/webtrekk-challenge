@@ -385,16 +385,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _components_index_index_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/index/index.component */ "./src/app/components/index/index.component.ts");
 /* harmony import */ var _components_create_create_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/create/create.component */ "./src/app/components/create/create.component.ts");
-/* harmony import */ var _components_edit_edit_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/edit/edit.component */ "./src/app/components/edit/edit.component.ts");
-/* harmony import */ var _routerConfig__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./routerConfig */ "./src/app/routerConfig.ts");
-/* harmony import */ var _service_customer_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./service/customer.service */ "./src/app/service/customer.service.ts");
+/* harmony import */ var _routerConfig__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./routerConfig */ "./src/app/routerConfig.ts");
+/* harmony import */ var _service_customer_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./service/customer.service */ "./src/app/service/customer.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -420,7 +418,6 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"],
                 _components_index_index_component__WEBPACK_IMPORTED_MODULE_12__["IndexComponent"],
                 _components_create_create_component__WEBPACK_IMPORTED_MODULE_13__["CreateComponent"],
-                _components_edit_edit_component__WEBPACK_IMPORTED_MODULE_14__["EditComponent"],
                 _directives_kz_mask_directive__WEBPACK_IMPORTED_MODULE_5__["KzMaskDirective"],
                 _directives_kz_pikaday_directive__WEBPACK_IMPORTED_MODULE_6__["KzPikadayDirective"],
                 _directives_currency_mask_directive__WEBPACK_IMPORTED_MODULE_9__["CurrencyMaskDirective"],
@@ -428,9 +425,9 @@ var AppModule = /** @class */ (function () {
                 _directives_datetime_picker_directive__WEBPACK_IMPORTED_MODULE_8__["DatetimePickerDirective"]
             ],
             imports: [
-                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(_routerConfig__WEBPACK_IMPORTED_MODULE_15__["appRoutes"]), _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"]
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(_routerConfig__WEBPACK_IMPORTED_MODULE_14__["appRoutes"]), _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"]
             ],
-            providers: [_service_customer_service__WEBPACK_IMPORTED_MODULE_16__["CustomerService"], _service_currency_mask_service__WEBPACK_IMPORTED_MODULE_10__["CurrencyMaskService"]],
+            providers: [_service_customer_service__WEBPACK_IMPORTED_MODULE_15__["CustomerService"], _service_currency_mask_service__WEBPACK_IMPORTED_MODULE_10__["CurrencyMaskService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]]
         })
     ], AppModule);
@@ -556,109 +553,6 @@ var CreateComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _service_customer_service__WEBPACK_IMPORTED_MODULE_2__["CustomerService"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]])
     ], CreateComponent);
     return CreateComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/edit/edit.component.css":
-/*!****************************************************!*\
-  !*** ./src/app/components/edit/edit.component.css ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/components/edit/edit.component.html":
-/*!*****************************************************!*\
-  !*** ./src/app/components/edit/edit.component.html ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"panel panel-primary\">\n  <div class=\"panel-heading\">\n    {{ title }}\n  </div>\n  <div *ngIf=\"customer\" class=\"panel-body\">\n    <form [formGroup]=\"angForm\" novalidate>\n      <div class=\"form-group\" *ngIf=\"customer.name\">\n        <label class=\"col-md-4\">First Name</label>\n        <input type=\"text\" class=\"form-control\" formControlName=\"first_name\" #first_name [(ngModel)] = \"customer.name.first\"/>\n      </div>\n      <div *ngIf=\"angForm.controls['first_name'].invalid && (angForm.controls['first_name'].dirty || angForm.controls['first_name'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['first_name'].errors.required\">\n          First Name is required.\n        </div>\n      </div>\n      <div class=\"form-group\" *ngIf=\"customer.name\">\n        <label class=\"col-md-4\">Last Name</label>\n        <input type=\"text\" class=\"form-control\" formControlName=\"last_name\" #last_name [(ngModel)] = \"customer.name.last\" />\n      </div>\n      <div *ngIf=\"angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"angForm.controls['last_name'].errors.required\">\n          Last Name is required.\n        </div>\n      </div>\n        <div class=\"btn-toolbar\">\n          <button (click)=\"updateCustomer(customer)\" [disabled]=\"angForm.pristine || angForm.invalid\" class=\"btn btn-primary\">Update</button>\n          <a [routerLink]=\"['/index']\" class=\"btn btn-primary\">Back</a>\n        </div>\n    </form>\n  </div>\n</div>"
-
-/***/ }),
-
-/***/ "./src/app/components/edit/edit.component.ts":
-/*!***************************************************!*\
-  !*** ./src/app/components/edit/edit.component.ts ***!
-  \***************************************************/
-/*! exports provided: EditComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditComponent", function() { return EditComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _service_customer_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../service/customer.service */ "./src/app/service/customer.service.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var EditComponent = /** @class */ (function () {
-    function EditComponent(route, router, service, fb) {
-        var _this = this;
-        this.route = route;
-        this.router = router;
-        this.service = service;
-        this.fb = fb;
-        this.title = 'Edit Customer';
-        this.route.params.subscribe(function (params) {
-            _this.customer = _this.service.editCustomer(params['id']).subscribe(function (res) {
-                _this.customer = res;
-            });
-        });
-        this.createForm();
-    }
-    EditComponent.prototype.createForm = function () {
-        this.angForm = this.fb.group({
-            first_name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            last_name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
-        });
-    };
-    EditComponent.prototype.updateCustomer = function (customer) {
-        var _this = this;
-        this.route.params.subscribe(function (params) {
-            _this.service.updateCustomer(customer, params['id'], null, null);
-            _this.router.navigate(['index']);
-        });
-    };
-    EditComponent.prototype.deleteCustomer = function (id) {
-        this.service.deleteCustomer(id).subscribe(function (res) {
-            console.log('Deleted');
-        });
-    };
-    EditComponent.prototype.ngOnInit = function () {
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], EditComponent.prototype, "customer", void 0);
-    EditComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-edit',
-            template: __webpack_require__(/*! ./edit.component.html */ "./src/app/components/edit/edit.component.html"),
-            styles: [__webpack_require__(/*! ./edit.component.css */ "./src/app/components/edit/edit.component.css")]
-        }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _service_customer_service__WEBPACK_IMPORTED_MODULE_2__["CustomerService"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]])
-    ], EditComponent);
-    return EditComponent;
 }());
 
 
@@ -1395,9 +1289,6 @@ __webpack_require__.r(__webpack_exports__);
 var Customer = /** @class */ (function () {
     function Customer() {
     }
-    Customer.getGenderDescription = function (customer) {
-        return Gender[customer.gender];
-    };
     return Customer;
 }());
 
@@ -1433,6 +1324,9 @@ var appRoutes = [
         component: _components_create_create_component__WEBPACK_IMPORTED_MODULE_0__["CreateComponent"]
     },
     { path: 'index',
+        component: _components_index_index_component__WEBPACK_IMPORTED_MODULE_1__["IndexComponent"]
+    },
+    { path: '',
         component: _components_index_index_component__WEBPACK_IMPORTED_MODULE_1__["IndexComponent"]
     }
 ];

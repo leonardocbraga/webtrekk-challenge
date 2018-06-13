@@ -9,9 +9,6 @@ export class Customer {
     lastContact: Date;
     customerLifetimeValue: number;
 
-    static getGenderDescription(customer){
-        return Gender[customer.gender];
-    }
 }
 
 export enum Gender {
