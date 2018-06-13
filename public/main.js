@@ -1456,7 +1456,7 @@ var CustomerService = /** @class */ (function () {
         });
     };
     CustomerService.prototype.getCustomers = function () {
-        var uri = 'https://localhost:8080/customers';
+        var uri = 'http://localhost:8080/customers';
         return this
             .http
             .get(uri)
