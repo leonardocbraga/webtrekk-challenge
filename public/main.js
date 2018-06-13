@@ -683,7 +683,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<a [routerLink]=\"['/create']\" class=\"btn btn-primary pull-left\">New</a>\n\n<table class=\"table table-hover\">\n  <thead>\n  <tr>\n      <td>First Name</td>\n      <td>Last Name</td>\n      <td>Gender</td>\n      <td>Birthday</td>\n      <td>Last Contact</td>\n      <td>Customer Lifetime Value</td>\n      <td>Actions</td>\n  </tr>\n  </thead>\n\n  <tbody>\n      <tr *ngFor=\"let customer of customers\">\n          <td>{{ customer.name.first }}</td>\n          <td>{{ customer.name.last }}</td>\n          <td>{{ customer.gender }}</td>\n          <td>{{ customer.birthday | date: 'MM/dd/yyyy' }}</td>\n          <td>{{ customer.lastContact | date: 'MM/dd/yyyy HH:mm:ss' }}</td>\n          <td>{{ customer.customerLifetimeValue }}</td>\n          <td>\n            <div>\n                <a [routerLink]=\"['/create', customer._id]\" class=\"btn btn-default\"><i class=\"glyphicon glyphicon-pencil\"></i></a>\n                <button (click)=\"deleteCustomer(customer._id)\"  class=\"btn btn-default\"><i class=\"glyphicon glyphicon-trash\"></i></button>\n            </div>\n          </td>\n      </tr>\n  </tbody>\n</table>"
+module.exports = "<a [routerLink]=\"['/create']\" class=\"btn btn-primary pull-left\">New</a>\n\n<table class=\"table table-hover\">\n  <thead>\n  <tr>\n      <td>First Name</td>\n      <td>Last Name</td>\n      <td>Gender</td>\n      <td>Birthday</td>\n      <td>Last Contact</td>\n      <td>Customer Lifetime Value</td>\n      <td>Actions</td>\n  </tr>\n  </thead>\n\n  <tbody>\n      <tr *ngFor=\"let customer of customers\">\n          <td>{{ customer.name.first }}</td>\n          <td>{{ customer.name.last }}</td>\n          <td>{{ getGenderDescription(customer) }}</td>\n          <td>{{ customer.birthday | date: 'MM/dd/yyyy' }}</td>\n          <td>{{ customer.lastContact | date: 'MM/dd/yyyy HH:mm:ss' }}</td>\n          <td>{{ customer.customerLifetimeValue }}</td>\n          <td>\n            <div>\n                <a [routerLink]=\"['/create', customer._id]\" class=\"btn btn-default\"><i class=\"glyphicon glyphicon-pencil\"></i></a>\n                <button (click)=\"deleteCustomer(customer._id)\"  class=\"btn btn-default\"><i class=\"glyphicon glyphicon-trash\"></i></button>\n            </div>\n          </td>\n      </tr>\n  </tbody>\n</table>"
 
 /***/ }),
 
@@ -701,6 +701,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _model_customer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../model/customer */ "./src/app/model/customer.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -714,6 +715,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var IndexComponent = /** @class */ (function () {
     function IndexComponent(http, route, router, service) {
         this.http = http;
@@ -723,6 +725,9 @@ var IndexComponent = /** @class */ (function () {
     }
     IndexComponent.prototype.ngOnInit = function () {
         this.getCustomers();
+    };
+    IndexComponent.prototype.getGenderDescription = function (customer) {
+        return _model_customer__WEBPACK_IMPORTED_MODULE_4__["Gender"][customer.gender];
     };
     IndexComponent.prototype.getCustomers = function () {
         var _this = this;
@@ -1372,6 +1377,35 @@ var KzPikadayDirective = /** @class */ (function () {
     var KzPikadayDirective_1;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/model/customer.ts":
+/*!***********************************!*\
+  !*** ./src/app/model/customer.ts ***!
+  \***********************************/
+/*! exports provided: Customer, Gender */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Customer", function() { return Customer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Gender", function() { return Gender; });
+var Customer = /** @class */ (function () {
+    function Customer() {
+    }
+    Customer.getGenderDescription = function (customer) {
+        return Gender[customer.gender];
+    };
+    return Customer;
+}());
+
+var Gender;
+(function (Gender) {
+    Gender["m"] = "Man";
+    Gender["w"] = "Woman";
+})(Gender || (Gender = {}));
 
 
 /***/ }),
