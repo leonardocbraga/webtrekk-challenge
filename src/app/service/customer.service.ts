@@ -23,7 +23,7 @@ export class CustomerService {
   }
 
   getCustomers() {
-    const uri = 'https://localhost:8080/customers';
+    const uri = 'http://localhost:8080/customers';
     return this
             .http
             .get(uri)
