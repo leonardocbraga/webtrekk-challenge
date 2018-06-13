@@ -13,7 +13,7 @@ export class CustomerService {
   constructor(private http: HttpClient) {}
 
   addCustomer(customer, callback, options) {
-    const uri = 'http://localhost:8080/customers/add';
+    const uri = '/customers/add';
   
     this
       .http
@@ -23,7 +23,7 @@ export class CustomerService {
   }
 
   getCustomers() {
-    const uri = 'http://localhost:8080/customers';
+    const uri = 'https://localhost:8080/customers';
     return this
             .http
             .get(uri)
