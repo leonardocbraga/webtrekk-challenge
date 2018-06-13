@@ -1447,7 +1447,7 @@ var CustomerService = /** @class */ (function () {
         this.http = http;
     }
     CustomerService.prototype.addCustomer = function (customer, callback, options) {
-        var uri = 'http://localhost:8080/customers/add';
+        var uri = '/customers/add';
         this
             .http
             .post(uri, customer)
@@ -1465,7 +1465,7 @@ var CustomerService = /** @class */ (function () {
         }));
     };
     CustomerService.prototype.editCustomer = function (id) {
-        var uri = 'http://localhost:8080/customers/edit/' + id;
+        var uri = '/customers/edit/' + id;
         return this
             .http
             .get(uri)
@@ -1474,14 +1474,14 @@ var CustomerService = /** @class */ (function () {
         }));
     };
     CustomerService.prototype.updateCustomer = function (customer, id, callback, options) {
-        var uri = 'http://localhost:8080/customers/update/' + id;
+        var uri = '/customers/update/' + id;
         this
             .http
             .post(uri, customer)
             .subscribe(function (res) { return callback(options); });
     };
     CustomerService.prototype.deleteCustomer = function (id) {
-        var uri = 'http://localhost:8080/customers/delete/' + id;
+        var uri = '/customers/delete/' + id;
         return this
             .http
             .get(uri)
