@@ -17,7 +17,7 @@
       <tr *ngFor="let customer of customers">
           <td>{{ customer.name.first }}</td>
           <td>{{ customer.name.last }}</td>
-          <td>{{ customer.gender }}</td>
+          <td>{{ getGenderDescription(customer) }}</td>
           <td>{{ customer.birthday | date: 'MM/dd/yyyy' }}</td>
           <td>{{ customer.lastContact | date: 'MM/dd/yyyy HH:mm:ss' }}</td>
           <td>{{ customer.customerLifetimeValue }}</td>

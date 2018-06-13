@@ -8,4 +8,13 @@ export class Customer {
     gender: string;
     lastContact: Date;
     customerLifetimeValue: number;
+
+    static getGenderDescription(customer){
+        return Gender[customer.gender];
+    }
+}
+
+export enum Gender {
+    m = 'Man' ,
+    w = 'Woman'
 }

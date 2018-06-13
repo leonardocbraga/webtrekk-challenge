@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Customer } from "../../model/customer"
+import { Gender } from "../../model/customer"
 
 @Component({
   selector: 'app-index',
@@ -17,6 +19,11 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.getCustomers();
+  }
+
+
+  getGenderDescription(customer){
+    return Gender[customer.gender];
   }
 
   getCustomers() {
