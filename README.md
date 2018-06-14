@@ -67,4 +67,4 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Deployment
 
-The application is deployed automatically on Heroku whenever a change is commited on [Github](https://github.com/leonardocbraga/webtrekk-challenge).
+The application is deployed automatically on Heroku whenever a change is commited on [Github](https://github.com/leonardocbraga/webtrekk-challenge). The link to application is [Webtrekk Challenge](https://leonardocbraga-webtrekk.herokuapp.com/).
